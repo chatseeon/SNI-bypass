@@ -1,7 +1,7 @@
 # SNI-bypass
 A tool to bypass network restrictions by modifying SNI and using custom host rules based on data from the SpaceTimee/Cealing-Host project. It allows dynamic domain-to-alias and alias-to-IP mapping for circumventing censorship.
 
-该项目旨在通过操控 SNI 字段，并使用自定义的主机规则来重定向流量，从而绕过网络审查。它利用来自 SpaceTimee/Cealing-Host 项目的数据结构生成域名映射，帮助用户绕过基于域名过滤的限制。
+该项目旨在通过操控 SNI 字段，并使用自定义的主机规则来重定向流量。它利用来自 SpaceTimee/Cealing-Host 项目的数据结构生成域名映射，帮助用户绕过基于域名过滤的限制。
 
 ### Features:
 1.Dynamic Domain Mapping: Maps multiple domains to a set of aliases and IP addresses to bypass filtering systems that rely on SNI.
