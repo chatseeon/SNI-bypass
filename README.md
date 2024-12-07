@@ -43,7 +43,7 @@ The `data.json` used in this project is sourced from the [SpaceTimee/Cealing-Hos
 ### 安全警告：
 - 请谨慎使用，尤其是在处理敏感数据或个人隐私信息时。
 - 仅在确保网络环境安全或进行调试时使用。
-- 强烈建议仅在信任的网络环境中使用此参数。
+- 强烈建议仅在信任的网络环境中使用。
 
 
 ## 数据来源
