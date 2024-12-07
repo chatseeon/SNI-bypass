@@ -1,4 +1,5 @@
-# 生成的命令包含 --ignore-certificate-errors 参数，该参数将绕过 SSL/TLS 证书验证，可能导致通信失去加密保护，信息可能被中间人攻击者监控或篡改。
+# 生成的命令包含 --ignore-certificate-errors 参数，该参数将绕过 SSL/TLS 证书验证。
+# 可能导致通信失去加密保护，信息可能被中间人攻击者监控或篡改。建议仅在信任的网络环境中使用。
 import json
 
 def generate_host_rules(data):
