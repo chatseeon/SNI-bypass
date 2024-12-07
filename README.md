@@ -13,7 +13,14 @@ A tool to bypass network restrictions by modifying SNI and using custom host rul
 1.Clone or download the repository.
 2.Modify the data.json file with your custom domains, aliases, and IP addresses.
 3.Run the script to generate the necessary command for bypassing network restrictions.
-4.Use the output command in your proxy or tunneling tool to bypass censorship.
+
+### Notes
+The --ignore-certificate-errors parameter bypasses SSL/TLS certificate verification, allowing intermediaries to replace the target website's certificate. This causes the connection to lose encryption protection, making the data susceptible to interception or tampering by man-in-the-middle attackers.
+
+### Security Warning:
+- Use with caution, especially when handling sensitive data or personal information.
+- Only use this parameter when you are certain that the network environment is safe or during debugging.
+- It is strongly recommended to use this parameter only in trusted network environments.
 
 ## Data Source
 The `data.json` used in this project is sourced from the [SpaceTimee/Cealing-Host](https://github.com/SpaceTimee/Cealing-Host) project.
@@ -28,7 +35,16 @@ The `data.json` used in this project is sourced from the [SpaceTimee/Cealing-Hos
 1.克隆或下载本仓库。
 2.修改 data.json 文件，添加你自定义的域名、别名和 IP 地址。
 3.运行脚本，生成绕过网络限制所需的命令。
-4.在代理或隧道工具中使用输出的命令，来绕过审查。
+
+## 注意事项
+
+`--ignore-certificate-errors` 参数会绕过 SSL/TLS 证书验证，从而允许中间代理替换掉目标网站的证书。这将导致连接失去加密保护，从而使得数据可能被中间人攻击者监控或篡改。
+
+### 安全警告：
+- 请谨慎使用，尤其是在处理敏感数据或个人隐私信息时。
+- 仅在确保网络环境安全或进行调试时使用。
+- 强烈建议仅在信任的网络环境中使用此参数。
+
 
 ## 数据来源
 该项目中的 `data.json` 数据来源于 [SpaceTimee/Cealing-Host](https://github.com/SpaceTimee/Cealing-Host) 项目。
