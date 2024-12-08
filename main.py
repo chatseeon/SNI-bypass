@@ -64,7 +64,7 @@ def clean_path(input_path):
 def get_browser_path():
     """提示用户输入浏览器路径"""
     while True:
-        browser_path = input("请输入浏览器的完整路径（例如 C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe）：\n")
+        browser_path = input("请输入要启动的浏览器的完整路径（例如 C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe）：\n")
         browser_path = clean_path(browser_path)
         
         # 检查路径是否存在
