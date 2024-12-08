@@ -1,8 +1,12 @@
 # 生成的命令包含 --ignore-certificate-errors 参数，该参数将绕过 SSL/TLS 证书验证。
 # 可能导致通信失去加密保护，信息可能被中间人攻击者监控或篡改。建议仅在信任的网络环境中使用。
+import os
 import json
+import subprocess
+
 
 def generate_host_rules(data):
+    """生成 --host-rules 和 --host-resolver-rules 参数"""
     host_rules = []
     resolver_rules = []
     alias_map = {}
@@ -38,7 +42,9 @@ def generate_host_rules(data):
         ' --host-resolver-rules="' + ",".join(resolver_rules) + '"'
     )
 
+
 def load_data_from_json(json_file):
+    """从 JSON 文件加载数据"""
     with open(json_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     if not isinstance(data, list):
@@ -48,8 +54,28 @@ def load_data_from_json(json_file):
             raise ValueError(f"数据格式错误: {entry}")
     return data
 
-if __name__ == "__main__":
-    # 使用相对路径
+
+def get_browser_path():
+    """提示用户输入浏览器路径"""
+    browser_path = input("请输入浏览器的完整路径（例如 C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe）：\n")
+    if not os.path.isfile(browser_path):
+        print(f"路径无效或文件不存在：{browser_path}")
+        return None
+    return browser_path
+
+
+def launch_browser(browser_path, params):
+    """启动浏览器并传递参数"""
+    try:
+        # 使用 subprocess 启动浏览器
+        subprocess.run([browser_path] + params, check=True)
+        print("浏览器已成功启动。")
+    except Exception as e:
+        print(f"启动浏览器时出错：{e}")
+
+
+def main():
+    # 使用相对路径加载 JSON 数据
     json_file = 'data.json'
 
     # 加载 JSON 数据
@@ -68,16 +94,22 @@ if __name__ == "__main__":
     # 生成规则
     host_rules, resolver_rules = generate_host_rules(data)
 
-    # 拼接最终的命令
-    final_command = f"{host_rules} {resolver_rules} --test-type --ignore-certificate-errors"
+    # 拼接参数
+    params = [
+        host_rules,
+        resolver_rules,
+        "--test-type",
+        "--ignore-certificate-errors"
+    ]
 
-# 写入到文件
-    with open("output.txt", "w", encoding="utf-8") as f:
-        f.write("# 生成的命令包含 --ignore-certificate-errors 参数，该参数将绕过 SSL/TLS 证书验证。\n")
-        f.write("# 可能导致通信失去加密保护，信息可能被中间人攻击者监控或篡改。建议仅在信任的网络环境中使用。\n\n")
-        f.write("生成的命令:\n")
-        f.write(final_command)
+    # 获取浏览器路径
+    browser_path = None
+    while not browser_path:
+        browser_path = get_browser_path()
 
-    # 输出到控制台
-    print("生成的命令:")
-    print(final_command)
+    # 启动浏览器
+    launch_browser(browser_path, params)
+
+
+if __name__ == "__main__":
+    main()
