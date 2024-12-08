@@ -85,6 +85,12 @@ def launch_browser(browser_path, params):
 
 
 def main():
+    # 提醒用户 --ignore-certificate-errors 参数的安全风险
+    print("""
+# 警告：生成的命令包含 --ignore-certificate-errors 参数，该参数将绕过 SSL/TLS 证书验证。
+# 可能导致通信失去加密保护，信息可能被中间人攻击者监控或篡改。建议仅在信任的网络环境中使用。
+    """)
+
     # 使用相对路径加载 JSON 数据
     json_file = 'data.json'
 
