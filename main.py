@@ -46,52 +46,6 @@ def generate_host_rules(data):
 def load_data_from_json(json_file):
     """从 JSON 文件加载数据"""
     with open(json_file, 'r', encoding='utf-8') as f:
-import os
-import json
-import subprocess
-
-
-def generate_host_rules(data):
-    """生成 --host-rules 和 --host-resolver-rules 参数"""
-    host_rules = []
-    resolver_rules = []
-    alias_map = {}
-
-    # 为每个唯一 IP 地址分配别名
-    alias_counter = 0
-    for entry in data:
-        domains, alias, ip = entry
-        if ip and not alias:  # 没有别名但有 IP，生成唯一别名
-            alias_key = f"CYFM{alias_counter}"
-            alias_map[ip] = alias_key
-            alias_counter += 1
-
-    for entry in data:
-        try:
-            domains, alias, ip = entry
-            if alias:  # 使用给定别名
-                for domain in domains:
-                    host_rules.append(f"MAP {domain} {alias}")
-                if ip:
-                    resolver_rules.append(f"MAP {alias} {ip}")
-            elif ip:  # 使用自动生成的别名
-                alias_key = alias_map[ip]
-                for domain in domains:
-                    host_rules.append(f"MAP {domain} {alias_key}")
-                resolver_rules.append(f"MAP {alias_key} {ip}")
-        except ValueError:
-            print(f"数据格式错误: {entry}")
-            continue
-
-    return (
-        ' --host-rules="' + ",".join(host_rules) + '"',
-        ' --host-resolver-rules="' + ",".join(resolver_rules) + '"'
-    )
-
-
-def load_data_from_json(json_file):
-    """从 JSON 文件加载数据"""
-    with open(json_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     if not isinstance(data, list):
         raise ValueError("JSON 数据必须是一个列表。")
