@@ -71,6 +71,13 @@ if __name__ == "__main__":
     # 拼接最终的命令
     final_command = f"{host_rules} {resolver_rules} --test-type --ignore-certificate-errors"
 
-    # 输出结果
+# 写入到文件
+    with open("output.txt", "w", encoding="utf-8") as f:
+        f.write("# 生成的命令包含 --ignore-certificate-errors 参数，该参数将绕过 SSL/TLS 证书验证。\n")
+        f.write("# 可能导致通信失去加密保护，信息可能被中间人攻击者监控或篡改。建议仅在信任的网络环境中使用。\n\n")
+        f.write("生成的命令:\n")
+        f.write(final_command)
+
+    # 输出到控制台
     print("生成的命令:")
     print(final_command)
