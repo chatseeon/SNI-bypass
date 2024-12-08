@@ -12,10 +12,14 @@ A tool to bypass network restrictions by modifying SNI and using custom host rul
 4. **一键启用**，使用方便简单，且修改是一次性的，不会影响浏览器的正常使用。
 
 ### 使用方法：
+如果您有 Python 环境：
 
 1. 克隆或下载本仓库。
 2. 在 CMD 中运行 `Get-data.py`，或者自行创建 `data.json` 文件，添加你自定义的域名、别名和 IP 地址。
 3. 运行 `main.py`，将会直接打开带参数的浏览器。
+
+如果您没有 Python 环境：
+点击链接下载并运行 [sni-bypass.exe](https://github.com/chatseeon/SNI-bypass/releases/tag/v1.0)
 
 ## 注意事项
 
@@ -40,10 +44,14 @@ A tool to bypass network restrictions by modifying SNI and using custom host rul
 4. **One-click Enable**: Simple to use, with one-time changes that do not affect the normal functioning of the browser.
 
 ### Usage:
+If you have a Python environment:
 
 1. Clone or download this repository.
-2. Run `Get-data.py` in CMD, or create your own `data.json` file to add your custom domains, aliases, and IP addresses.
-3. Run `main.py`, which will directly open the browser with the necessary parameters.
+2. Run `Get-data.py` in CMD, or create your own `data.json` file with custom domains, aliases, and IP addresses.
+3. Run `main.py`, and it will automatically open the browser with the specified parameters.
+
+If you don't have a Python environment:
+Click the link to download and run [sni-bypass.exe](https://github.com/chatseeon/SNI-bypass/releases/tag/v1.0)
 
 ## Notes
 
